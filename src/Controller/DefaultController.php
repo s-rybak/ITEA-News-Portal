@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
@@ -9,7 +10,7 @@ use Symfony\Component\HttpFoundation\Response;
  *
  * @author Vladimir Kuprienko <vldmr.kuprienko@gmail.com>
  */
-class DefaultController
+class DefaultController extends AbstractController
 {
     /**
      * Home page.
@@ -18,6 +19,6 @@ class DefaultController
      */
     public function index(): Response
     {
-        return new Response('<h1>News Portal</h1>');
+        return $this->render('default/index.html.twig');
     }
 }
