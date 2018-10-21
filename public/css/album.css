@@ -1,7 +1,21 @@
 :root {
     --jumbotron-padding-y: 3rem;
 }
-
+.page-contact_us section.jumbotron{
+    background-image: url(../img/contact_us_bg.jpg);
+    background-size: cover;
+    background-position: top;
+}
+.card-body.dark-side{
+    background: #212529;
+    color: white;
+}
+.page-contact_us #map{
+    min-height: 300px;
+}
+.nopadding {
+    padding: 0 !important;
+}
 .jumbotron {
     padding-top: var(--jumbotron-padding-y);
     padding-bottom: var(--jumbotron-padding-y);
@@ -26,11 +40,53 @@
 .jumbotron .container {
     max-width: 40rem;
 }
+.page-contact_us section.jumbotron .jumbotron-heading{
+    text-shadow: 1px 0 2px rgba(255, 255, 255, 0.83);
+}
+.page-contact_us section.jumbotron .lead.text-muted{
 
+}
 .card-text {
     height: 130px;
 }
 
+.feed-back-form{
+    margin-top: 20px;
+}
+
+.feed-back-form label{
+    display: block;
+    font-size: 20px;
+    padding-left: 3px;
+}
+
+.feed-back-form button[type="submit"]{
+    padding: 10px;
+    width: 100%;
+    background: #0069d9;
+    border-radius: 5px;
+    border: 1px solid rgba(192, 192, 192, 0.39);
+    color: white;
+    cursor: pointer;
+}
+
+.feed-back-form textarea,
+.feed-back-form input{
+    width: 100%;
+    padding: 5px;
+    text-align: center;
+    color: white;
+    background: transparent;
+    border-radius: 5px;
+    border: 1px solid silver;
+    resize: none;
+}
+.feed-back-form form > div > div{
+    margin-bottom: 20px;
+}
+#contact_us_form{
+    overflow: hidden;
+}
 footer {
     padding-top: 3rem;
     padding-bottom: 3rem;
