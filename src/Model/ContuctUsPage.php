@@ -3,52 +3,48 @@
 namespace App\Model;
 
 /**
- * Contac us DTO
+ * Contac us DTO.
  *
- * @package App\Model
  *
  * @author Sergey R <qwe@qwe.com>
  */
-final class ContuctUsPage {
+final class ContuctUsPage
+{
+    private $phone;
+    private $email;
+    private $address;
 
-	private $phone;
-	private $email;
-	private $address;
+    public function __construct(
+        string $phone,
+        string $email,
+        string $address
+    ) {
+        $this->phone = $phone;
+        $this->email = $email;
+        $this->address = $address;
+    }
 
-	public function __construct(
-		string $phone,
-		string $email,
-		string $address
-	)
-	{
-		$this->phone = $phone;
-		$this->email = $email;
-		$this->address = $address;
-	}
+    /**
+     * @return string Company phone number
+     */
+    public function getPhone(): string
+    {
+        return $this->phone;
+    }
 
-	/**
-	 * @return string Company phone number
-	 */
-	public function getPhone(): string
-	{
-		return $this->phone;
-	}
+    /**
+     * @return string Company email address
+     */
+    public function getEmail(): string
+    {
+        return $this->email;
+    }
 
-	/**
-	 * @return string Company email address
-	 */
-	public function getEmail(): string
-	{
-		return $this->email;
-	}
-
-	/**
-	 * @return string Company address
-	 */
-	public function getAddress(): string
-	{
-		return $this->address;
-	}
-
-
+    /**
+     * @return string Company address
+     */
+    public function getAddress(): string
+    {
+        return $this->address;
+    }
 }

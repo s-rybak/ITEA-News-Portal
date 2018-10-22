@@ -11,10 +11,10 @@ use App\Model\ContuctUsPage;
  */
 interface ContactUsServiceInterface
 {
-	/**
-	 * Gets contact us page data.
-	 *
-	 * @return ContuctUsPage
-	 */
-	public function getData(): ContuctUsPage;
+    /**
+     * Gets contact us page data.
+     *
+     * @return ContuctUsPage
+     */
+    public function getData(): ContuctUsPage;
 }
