@@ -1,0 +1,26 @@
+parameters:
+    greeflas.newsletter.subscribers_save_path: "/../../var/file_storage/"
+    greeflas.newsletter.subscribers_file_name: "subscribers"
+    greeflas.newsletter.subscribers_file_type: "Csv" #supports Xls,Xlsx,Xml,Ods,Slk,Gnumeric,Csv
+
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: false
+
+  Greeflas\Bundle\NewsletterBundle\:
+        resource: '../../*'
+        exclude: '../../{DependencyInjection,Dto}'
+
+  Greeflas\Bundle\NewsletterBundle\Controller\DefaultController:
+    tags: ['controller.service_arguments']
+
+  Greeflas\Bundle\NewsletterBundle\Service\NewsLetterSubscriberCSVList:
+    class: Greeflas\Bundle\NewsletterBundle\Service\NewsLetterSubscriberCSVList
+    arguments:
+      - "%greeflas.newsletter.subscribers_save_path%"
+      - "%greeflas.newsletter.subscribers_file_name%"
+      - "%greeflas.newsletter.subscribers_file_type%"
+
+  Greeflas\Bundle\NewsletterBundle\Service\NewsletterSubscriberInterface: '@Greeflas\Bundle\NewsletterBundle\Service\NewsLetterSubscriberCSVList'

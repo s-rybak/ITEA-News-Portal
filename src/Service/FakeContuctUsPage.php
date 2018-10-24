@@ -2,7 +2,7 @@
 
 namespace App\Service;
 
-use App\Model\ContuctUsPage;
+use App\DTO\ContuctUsPage;
 
 /**
  * Service provides fake data for contact us page.

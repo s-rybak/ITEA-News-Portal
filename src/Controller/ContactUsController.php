@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Service\ContactUsServiceInterface;
+use App\Service\MessageRecivedMailer;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -29,7 +30,7 @@ class ContactUsController extends AbstractController
      *
      * @return Response
      */
-    public function index(): Response
+    public function index(MessageRecivedMailer $mailer): Response
     {
         $form = $this->createFormBuilder()
                      ->add('name', TextType::class, ['label' => 'Name'])
@@ -37,6 +38,8 @@ class ContactUsController extends AbstractController
                      ->add('message', TextareaType::class, ['label' => 'Message'])
                      ->add('send', SubmitType::class, ['label' => 'Send message'])
                      ->getForm();
+	    //$mailer->debug();
+	    $mailer->send("qwe@qwe.com");
 
         return $this->render('contact_us/index.html.twig', [
             'page' => $this->service->getData(),

@@ -2,7 +2,7 @@
 
 namespace App\Service;
 
-use App\Model\HomePage;
+use App\DTO\HomePage;
 
 /**
  * Contract for home page service.

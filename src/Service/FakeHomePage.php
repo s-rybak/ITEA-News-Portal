@@ -2,7 +2,7 @@
 
 namespace App\Service;
 
-use App\Model\HomePage;
+use App\DTO\HomePage;
 
 /**
  * Service provides fake data for home page.

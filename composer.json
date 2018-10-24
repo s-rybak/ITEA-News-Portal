@@ -22,7 +22,8 @@
         "symfony/twig-bundle": "*",
         "symfony/validator": "*",
         "symfony/web-link": "*",
-        "symfony/yaml": "*"
+        "symfony/yaml": "*",
+        "phpoffice/phpspreadsheet": "*"
     },
     "require-dev": {
         "symfony/debug-pack": "*",
@@ -46,7 +47,8 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "App\\Tests\\": "tests/"
+            "App\\Tests\\": "tests/",
+            "Greeflas\\Bundle\\NewsletterBundle\\": "GreeflasNewsletterBundle/"
         }
     },
     "replace": {
