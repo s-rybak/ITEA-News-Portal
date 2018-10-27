@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ITEA News Portal{% endblock %}
+
+{% block main %}
+    <main role="main">
+        <section class="jumbotron text-center">
+            <div class="container">
+                <h1 class="jumbotron-heading">{{ category.title }}</h1>
+            </div>
+        </section>
+        <div class="album py-5 bg-light">
+            <div class="container">
+                <div class="row">
+                    {% for post in category.post %}
+                        <div class="col-md-4">
+                            <div class="card mb-4 shadow-sm">
+                                <img class="card-img-top" src="/img/{{ post.image }}" alt="">
+                                <div class="card-body">
+                                    <p class="card-text">
+                                        {{ post.title }}
+                                    </p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="btn-group">
+                                            <a href="/news/{{ post.id }}" class="btn btn-sm btn-outline-secondary">Read</a>
+                                        </div>
+                                        <small class="text-muted">{{ post.createdAt|ago }}</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}

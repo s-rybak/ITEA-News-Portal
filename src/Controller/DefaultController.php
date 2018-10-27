@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Entity\Category;
+use App\Repository\CategoryRepositoryInterface;
 use App\Service\HomePageServiceInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -27,8 +29,13 @@ class DefaultController extends AbstractController
      */
     public function index(): Response
     {
+    	//$em = $this->getDoctrine()->getManager()->getRepository(Category::class);
+    	// XDEBUG  скачать
+
         return $this->render('default/index.html.twig', [
             'page' => $this->service->getData(),
+	        'categories'=>$this->service->getCategories(),
+	        'posts'=>$this->service->getLatestPost(),
         ]);
     }
 }

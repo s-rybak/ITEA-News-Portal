@@ -22,6 +22,9 @@
     margin-bottom: 0;
     background-color: #fff;
 }
+.page-post .jumbotron{
+    margin-bottom: 0;
+}
 @media (min-width: 768px) {
     .jumbotron {
         padding-top: calc(var(--jumbotron-padding-y) * 2);

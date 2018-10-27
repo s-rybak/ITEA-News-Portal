@@ -3,6 +3,7 @@
 namespace App\Service;
 
 use App\DTO\HomePage;
+use App\Repository\CategoryRepositoryInterface;
 
 /**
  * Service provides fake data for home page.
@@ -11,7 +12,17 @@ use App\DTO\HomePage;
  */
 final class FakeHomePage implements HomePageServiceInterface
 {
-    /**
+
+	protected $category_repository;
+
+	public function __construct(CategoryRepositoryInterface $repository)
+	{
+
+		$this->category_repository = $repository;
+
+	}
+
+	/**
      * {@inheritdoc}
      */
     public function getData(): HomePage
@@ -25,4 +36,13 @@ final class FakeHomePage implements HomePageServiceInterface
             'Suggest news'
         );
     }
+
+	public function getCategories(): iterable
+	{
+		return $this->category_repository->fundAllCategories();
+	}
+
+	public function getLatestPost(): iterable {
+		return [];
+	}
 }

@@ -23,54 +23,37 @@
     <div class="album py-5 bg-light">
         <div class="container">
             <div class="row">
+                <div class="list-group col-md-6">
+                    {% for category in categories %}
+                        <a href="/category/{{ category.id }}" class="list-group-item list-group-item-action">
+                            {{ category.title }}
+                        </a>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="album py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                {% for post in posts %}
                 <div class="col-md-4">
                     <div class="card mb-4 shadow-sm">
-                        <img class="card-img-top" src="img/default.png" alt="">
+                        <img class="card-img-top" src="img/{{ post.image }}" alt="">
                         <div class="card-body">
                             <p class="card-text">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores debitis eligendi expedita inventore laborum nihil officiis, repudiandae suscipit! Obcaecati, quibusdam.
+                                {{ post.title }}
                             </p>
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="btn-group">
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">Read</button>
+                                    <a href="/news/{{ post.id }}" class="btn btn-sm btn-outline-secondary">Read</a>
                                 </div>
-                                <small class="text-muted">9 mins</small>
+                                <small class="text-muted">{{ post.createdAt|ago }}</small>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="card mb-4 shadow-sm">
-                        <img class="card-img-top" src="img/default.png" alt="">
-                        <div class="card-body">
-                            <p class="card-text">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius, illo!
-                            </p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">Read</button>
-                                </div>
-                                <small class="text-muted">1 hour</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card mb-4 shadow-sm">
-                        <img class="card-img-top" src="img/default.png" alt="">
-                        <div class="card-body">
-                            <p class="card-text">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis esse expedita explicabo ipsam magni officiis.
-                            </p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">Read</button>
-                                </div>
-                                <small class="text-muted">2 days</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
         </div>
     </div>

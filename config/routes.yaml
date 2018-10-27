@@ -8,3 +8,11 @@ contact_us:
     methods: [GET]
 greeflas_newsletter:
     resource: '@GreeflasNewsletterBundle/Resources/config/routes.yaml'
+post:
+    path: /news/{id}
+    controller: App\Controller\PostController::index
+    methods: [GET]
+category:
+    path: /category/{id}
+    controller: App\Controller\PostController::categoryPosts
+    methods: [GET]

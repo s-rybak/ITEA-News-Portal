@@ -17,4 +17,8 @@ interface HomePageServiceInterface
      * @return HomePage
      */
     public function getData(): HomePage;
+
+    public function getCategories(): iterable;
+
+    public function getLatestPost():iterable;
 }

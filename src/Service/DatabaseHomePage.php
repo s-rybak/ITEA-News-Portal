@@ -9,9 +9,21 @@
 namespace App\Service;
 
 use App\DTO\HomePage;
+use App\Repository\CategoryRepositoryInterface;
+use App\Repository\PostRepositoryInterface;
 
 final class DatabaseHomePage implements HomePageServiceInterface {
 
+	protected $category_repository;
+	protected $post_repository;
+
+	public function __construct(CategoryRepositoryInterface $repository,PostRepositoryInterface $post)
+	{
+
+		$this->category_repository = $repository;
+		$this->post_repository = $post;
+
+	}
 	/**
 	 * {@inheritdoc}
 	 */
@@ -25,5 +37,16 @@ final class DatabaseHomePage implements HomePageServiceInterface {
 			'Read News',
 			'Suggest news'
 		);
+	}
+
+	public function getCategories(): iterable
+	{
+		return $this->category_repository->fundAllCategories();
+	}
+
+	public function getLatestPost(): iterable {
+
+		return $this->post_repository->getLatest(3);
+
 	}
 }

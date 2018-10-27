@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ITEA News Portal | Contact us{% endblock %}
+
+{% block main %}
+    <main role="main" class="page-post">
+        <section class="jumbotron text-center" style="background-image: url(/img/{{ post.image }})">
+            <div class="container">
+                <h1 class="jumbotron-heading">{{ post.title }}</h1>
+                <p class="lead text-muted"></p>
+            </div>
+        </section>
+        <div class="album py-5 bg-light">
+            <div class="container">
+                <div class="row">
+                    <div class="card col-md-12 shadow-sm" id="contact_us_form">
+                        <div class="card-body">
+                            {{ post.body }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Map section-->
+        <section>
+            <div class="row">
+
+                <div class="col-md-12 shadow-sm nopadding">
+                    <div id="map"></div>
+                </div>
+            </div>
+        </section>
+        <!--Map section end-->
+    </main>
+{% endblock %}
