@@ -20,5 +20,5 @@ interface HomePageServiceInterface
 
     public function getCategories(): iterable;
 
-    public function getLatestPost():iterable;
+    public function getLatestPost(): iterable;
 }

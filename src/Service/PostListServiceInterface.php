@@ -1,16 +1,13 @@
 <?php
+
 namespace App\Service;
 
 use App\Entity\Category;
 
 /**
- * Interface for post list page
- * @package App\Service
- *
+ * Interface for post list page.
  */
-
-interface PostListServiceInterface {
-
-	public function getPostsByCategory($category):Category;
-
+interface PostListServiceInterface
+{
+    public function getPostsByCategory($category): Category;
 }

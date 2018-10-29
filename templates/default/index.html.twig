@@ -25,7 +25,7 @@
             <div class="row">
                 <div class="list-group col-md-6">
                     {% for category in categories %}
-                        <a href="/category/{{ category.id }}" class="list-group-item list-group-item-action">
+                        <a href="{{ path('category',{id:category.id}) }}" class="list-group-item list-group-item-action">
                             {{ category.title }}
                         </a>
                     {% endfor %}

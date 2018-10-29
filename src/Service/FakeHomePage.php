@@ -12,17 +12,14 @@ use App\Repository\CategoryRepositoryInterface;
  */
 final class FakeHomePage implements HomePageServiceInterface
 {
+    private $category_repository;
 
-	protected $category_repository;
+    public function __construct(CategoryRepositoryInterface $repository)
+    {
+        $this->category_repository = $repository;
+    }
 
-	public function __construct(CategoryRepositoryInterface $repository)
-	{
-
-		$this->category_repository = $repository;
-
-	}
-
-	/**
+    /**
      * {@inheritdoc}
      */
     public function getData(): HomePage
@@ -37,12 +34,13 @@ final class FakeHomePage implements HomePageServiceInterface
         );
     }
 
-	public function getCategories(): iterable
-	{
-		return $this->category_repository->fundAllCategories();
-	}
+    public function getCategories(): iterable
+    {
+        return $this->category_repository->fundAllCategories();
+    }
 
-	public function getLatestPost(): iterable {
-		return [];
-	}
+    public function getLatestPost(): iterable
+    {
+        return [];
+    }
 }

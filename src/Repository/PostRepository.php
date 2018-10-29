@@ -20,71 +20,63 @@ class PostRepository extends ServiceEntityRepository implements PostRepositoryIn
         parent::__construct($registry, Post::class);
     }
 
-	public function save( Post $post ): void {
+    public function save(Post $post): void
+    {
+    }
 
-	}
+    public function saveAll(iterable $post): void
+    {
+        $em = $this->getEntityManager();
+        $em->beginTransaction();
 
-	public function saveAll( iterable $post ): void {
+        try {
+            foreach ($post as $pos) {
+                $em->persist($pos);
+            }
 
-    	$em = $this->getEntityManager();
-		$em->beginTransaction();
+            $em->flush();
+            $em->commit();
+        } catch (ORMException $e) {
+            $em->rollback();
+        }
+    }
 
-		try{
+    /**
+     * @param int $count
+     *
+     * @return iterable
+     */
+    public function getLatest(int $count): iterable
+    {
+        $count = $count ?? 3;
 
-			foreach ($post as $pos){
+        return $this->createQueryBuilder('p')
+            //->join('p.category','c')
+            ->select()
+            ->setMaxResults($count)
+            ->addOrderBy('p.id', 'DESC')
+            ->getQuery()
+            ->getResult();
+    }
 
-				$em->persist($pos);
+    /**
+     * @param int $id
+     *
+     * @return Post
+     */
+    public function getById(int $id): ?Post
+    {
+        return $this->find($id);
+    }
 
-			}
-
-			$em->flush();
-			$em->commit();
-
-		}catch (ORMException $e){
-
-			$em->rollback();
-
-		}
-
-	}
-
-	/**
-	 * @param int $count
-	 *
-	 * @return iterable
-	 */
-	public function getLatest( int $count ): iterable {
-
-		$count = $count ?? 3;
-
-    	return $this->createQueryBuilder("p")
-		    //->join('p.category','c')
-		    ->select()
-		    ->setMaxResults($count)
-		    ->addOrderBy('p.id','DESC')
-		    ->getQuery()
-		    ->getResult();
-
-	}
-
-	/**
-	 * @param int $id
-	 *
-	 * @return Post
-	 */
-	public function getById( int $id ): Post
-	{
-		return $this->find($id);
-	}
-
-	public function getByCategory( int $id ): iterable
-	{
-		return $this->createQueryBuilder("p")
-			 ->join('p.category','c')
-			 ->where("c.id = {$id}")
-			 ->select()
-		     ->addOrderBy('p.id','DESC')
-		     ->getQuery()
-		     ->getResult();
-	}
+    public function getByCategory(int $id): iterable
+    {
+        return $this->createQueryBuilder('p')
+             ->join('p.category', 'c')
+             ->where("c.id = {$id}")
+             ->select()
+             ->addOrderBy('p.id', 'DESC')
+             ->getQuery()
+             ->getResult();
+    }
 }

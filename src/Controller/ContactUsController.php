@@ -38,8 +38,8 @@ class ContactUsController extends AbstractController
                      ->add('message', TextareaType::class, ['label' => 'Message'])
                      ->add('send', SubmitType::class, ['label' => 'Send message'])
                      ->getForm();
-	    //$mailer->debug();
-	    $mailer->send("qwe@qwe.com");
+        //$mailer->debug();
+        $mailer->send('qwe@qwe.com');
 
         return $this->render('contact_us/index.html.twig', [
             'page' => $this->service->getData(),

@@ -31,9 +31,9 @@ class Category
      */
     private $updated_at;
 
-	/**
-	 * @ORM\OneToMany(targetEntity="App\Entity\Post", mappedBy="category")
-	 */
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Post", mappedBy="category")
+     */
     private $post;
 
     public function getId(): ?int
@@ -77,18 +77,19 @@ class Category
         return $this;
     }
 
-	/**
-	 * @return iterable
-	 */
-	public function getPost(): iterable
-	{
-		return $this->post;
-	}
+    /**
+     * @return iterable
+     */
+    public function getPost(): iterable
+    {
+        return $this->post;
+    }
 
-	/**
-	 * @param mixed $post
-	 */
-	public function setPost(Post $post ): void {
-		$this->post = $post;
-	}
+    /**
+     * @param mixed $post
+     */
+    public function setPost(Post $post): void
+    {
+        $this->post = $post;
+    }
 }

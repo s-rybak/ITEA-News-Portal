@@ -3,7 +3,6 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\ORM\Mapping\JoinColumn;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\PostRepository")
@@ -47,22 +46,20 @@ class Post
      */
     private $updated_at;
 
-	/**
-	 * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="posts")
-	 */
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="posts")
+     */
     private $category;
 
-    public function __construct() {
+    public function __construct()
+    {
+        $data = new \DateTimeImmutable();
 
-    	$data = new \DateTimeImmutable();
-
-    	$this->created_at = $data;
-    	$this->updated_at = $data;
-
+        $this->created_at = $data;
+        $this->updated_at = $data;
     }
 
-
-	public function getId(): ?int
+    public function getId(): ?int
     {
         return $this->id;
     }
@@ -105,7 +102,7 @@ class Post
 
     public function getImage(): ?string
     {
-        return $this->image ?? "default.png";
+        return $this->image ?? 'default.png';
     }
 
     public function setImage(?string $image): self
@@ -139,20 +136,19 @@ class Post
         return $this;
     }
 
-	/**
-	 * @return mixed
-	 */
-	public function getCategory() :Category
-	{
-		return $this->category;
-	}
+    /**
+     * @return mixed
+     */
+    public function getCategory(): Category
+    {
+        return $this->category;
+    }
 
-	/**
-	 * @param int $category
-	 */
-	public function setCategory(int $category ): void
-	{
-		$this->category = $category;
-	}
-
+    /**
+     * @param int $category
+     */
+    public function setCategory(int $category): void
+    {
+        $this->category = $category;
+    }
 }
