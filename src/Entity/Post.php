@@ -147,7 +147,7 @@ class Post
     /**
      * @param int $category
      */
-    public function setCategory(int $category): void
+    public function setCategory($category): void
     {
         $this->category = $category;
     }

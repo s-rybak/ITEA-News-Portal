@@ -16,4 +16,5 @@ return [
     Symfony\Bundle\WebServerBundle\WebServerBundle::class => ['dev' => true],
     Greeflas\Bundle\NewsletterBundle\GreeflasNewsletterBundle::class => ['dev' => true],
     Knp\Bundle\TimeBundle\KnpTimeBundle::class => ['all' => true],
+    FOS\RestBundle\FOSRestBundle::class => ['all' => true],
 ];

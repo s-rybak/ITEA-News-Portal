@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Service;
+namespace App\Service\Post;
 
 use App\Entity\Category;
 use App\Entity\Post;
@@ -18,7 +18,7 @@ class PostListService implements PostListServiceInterface
         $this->category_repository = $post;
     }
 
-    public function getPostsByCategory($categoryId): Category
+    public function getPostsByCategory($categoryId): ?Category
     {
         return $this->category_repository->getById($categoryId);
     }

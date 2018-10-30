@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Service;
+namespace App\Service\Post;
 
 use App\Entity\Category;
 
@@ -9,5 +9,5 @@ use App\Entity\Category;
  */
 interface PostListServiceInterface
 {
-    public function getPostsByCategory($category): Category;
+    public function getPostsByCategory($category): ?Category;
 }

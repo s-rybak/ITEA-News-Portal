@@ -20,8 +20,14 @@ class PostRepository extends ServiceEntityRepository implements PostRepositoryIn
         parent::__construct($registry, Post::class);
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function save(Post $post): void
     {
+        $em = $this->getEntityManager();
+        $em->persist($post);
+        $em->flush();
     }
 
     public function saveAll(iterable $post): void
@@ -69,6 +75,9 @@ class PostRepository extends ServiceEntityRepository implements PostRepositoryIn
         return $this->find($id);
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function getByCategory(int $id): iterable
     {
         return $this->createQueryBuilder('p')
@@ -78,5 +87,26 @@ class PostRepository extends ServiceEntityRepository implements PostRepositoryIn
              ->addOrderBy('p.id', 'DESC')
              ->getQuery()
              ->getResult();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function delete(int $id): void
+    {
+        $post = $this->getById($id);
+        $em = $this->getEntityManager();
+        $em->remove($post);
+        $em->flush();
+    }
+
+    /**
+     * Get all posts.
+     *
+     * @return iterable
+     */
+    public function getAll(): iterable
+    {
+        return $this->findAll();
     }
 }
