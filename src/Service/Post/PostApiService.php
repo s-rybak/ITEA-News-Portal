@@ -94,7 +94,7 @@ class PostApiService implements PostApiServiceInterface
         $posts = [];
 
         foreach ($this->post_repository->getAll() as $post) {
-            array_push($posts, $this->post_transformer->entityToResource($post));
+            $posts[] = $this->post_transformer->entityToResource($post);
         }
 
         return $posts;

@@ -29,7 +29,7 @@ class PostController extends FOSRestController
      *
      * @return View
      *
-     * @Rest\Post("/api/post")
+     * @Rest\Post("/post")
      */
     public function postPost(Request $request): View
     {
@@ -41,7 +41,7 @@ class PostController extends FOSRestController
     /**
      * @return View
      *
-     * @Rest\Get("/api/post/all")
+     * @Rest\Get("/posts")
      */
     public function getAllPosts(): View
     {
@@ -55,7 +55,7 @@ class PostController extends FOSRestController
      *
      * @return View
      *
-     * @Rest\Get("/api/post/{id}")
+     * @Rest\Get("/post/{id}")
      */
     public function getPost(int $id): View
     {
@@ -71,7 +71,7 @@ class PostController extends FOSRestController
      *
      * @return View
      *
-     * @Rest\Patch("/api/post/{id}")
+     * @Rest\Patch("/post/{id}")
      */
     public function patchPost(int $id, Request $request): View
     {
@@ -87,7 +87,7 @@ class PostController extends FOSRestController
      *
      * @return View
      *
-     * @Rest\Delete("/api/post/{id}")
+     * @Rest\Delete("/post/{id}")
      */
     public function deletePost(int $id): View
     {
